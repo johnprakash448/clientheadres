@@ -1,0 +1,50 @@
+#%RAML 1.0
+title: Firstraml
+traits:
+  client_requrirement:
+      headers:
+        clint_id:
+          type: string
+          required: true
+        clint_secreat:
+          type: string 
+
+/Productitem :
+  get:
+    is:
+      - client_requrirement
+    description: Fetching the data
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include Product.json
+              
+  
+
+/Custmoritem : 
+  get:
+    is:
+      - client_requrirement
+    description: Fetching the data
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include Custmor.json
+
+/Companyitem :
+  post:
+    is:
+      - client_requrirement
+    body:
+      application/json:
+        example:
+          {
+            "name" : "john"
+          }
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include Custmor.json               
